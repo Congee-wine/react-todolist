@@ -1,0 +1,99 @@
+// 默认主题 - 清新浅蓝色系
+:root {
+  // 主色调
+  --primary-color: #4a90e2;
+  --primary-light: #6ba3e8;
+  --primary-dark: #3a7bc8;
+  --secondary-color: #7dd3fc;
+  --accent-color: #38bdf8;
+
+  // 背景色 - 基于主题色生成
+  --bg-gradient-start: #e0f2fe;
+  --bg-gradient-mid: #bae6fd;
+  --bg-gradient-end: #7dd3fc;
+  --bg-card: rgba(255, 255, 255, 0.2);
+  --bg-card-hover: rgba(255, 255, 255, 0.85);
+
+  // 文字颜色
+  --text-primary: #1e293b;
+  --text-secondary: #64748b;
+  --text-light: #94a3b8;
+  --text-white: #ffffff;
+
+  // 边框和阴影 - 使用主色调的透明度
+  --border-color: rgba(74, 144, 226, 0.2);
+  --shadow-sm: 0 2px 8px rgba(74, 144, 226, 0.1);
+  --shadow-md: 0 4px 16px rgba(74, 144, 226, 0.15);
+  --shadow-lg: 0 8px 32px rgba(74, 144, 226, 0.2);
+
+  // 圆角
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+
+  // 间距
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+
+  // 过渡动画
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+  --transition-slow: 0.5s ease;
+}
+
+// 粉色主题
+[data-theme='pink'] {
+  --primary-color: #ec4899;
+  --primary-light: #f472b6;
+  --primary-dark: #db2777;
+  --secondary-color: #fbcfe8;
+  --accent-color: #f9a8d4;
+
+  --bg-gradient-start: #fce7f3;
+  --bg-gradient-mid: #fbcfe8;
+  --bg-gradient-end: #f9a8d4;
+
+  --border-color: rgba(236, 72, 153, 0.2);
+  --shadow-sm: 0 2px 8px rgba(236, 72, 153, 0.1);
+  --shadow-md: 0 4px 16px rgba(236, 72, 153, 0.15);
+  --shadow-lg: 0 8px 32px rgba(236, 72, 153, 0.2);
+}
+
+// 绿色主题
+[data-theme='green'] {
+  --primary-color: #10b981;
+  --primary-light: #34d399;
+  --primary-dark: #059669;
+  --secondary-color: #6ee7b7;
+  --accent-color: #34d399;
+
+  --bg-gradient-start: #d1fae5;
+  --bg-gradient-mid: #a7f3d0;
+  --bg-gradient-end: #6ee7b7;
+
+  --border-color: rgba(16, 185, 129, 0.2);
+  --shadow-sm: 0 2px 8px rgba(16, 185, 129, 0.1);
+  --shadow-md: 0 4px 16px rgba(16, 185, 129, 0.15);
+  --shadow-lg: 0 8px 32px rgba(16, 185, 129, 0.2);
+}
+
+// 紫色主题
+[data-theme='purple'] {
+  --primary-color: #8b5cf6;
+  --primary-light: #a78bfa;
+  --primary-dark: #7c3aed;
+  --secondary-color: #c4b5fd;
+  --accent-color: #a78bfa;
+
+  --bg-gradient-start: #ede9fe;
+  --bg-gradient-mid: #ddd6fe;
+  --bg-gradient-end: #c4b5fd;
+
+  --border-color: rgba(139, 92, 246, 0.2);
+  --shadow-sm: 0 2px 8px rgba(139, 92, 246, 0.1);
+  --shadow-md: 0 4px 16px rgba(139, 92, 246, 0.15);
+  --shadow-lg: 0 8px 32px rgba(139, 92, 246, 0.2);
+}

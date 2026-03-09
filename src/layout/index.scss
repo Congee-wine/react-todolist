@@ -1,0 +1,17 @@
+@use '@/styles/variables.scss';
+
+.app-container {
+  width: 100%;
+  max-width: 1000px;
+  background: var(--bg-card);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+  transition: all var(--transition-normal);
+
+  &:hover {
+    box-shadow: 0 12px 40px rgba(74, 144, 226, 0.25);
+  }
+}

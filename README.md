@@ -1,73 +1,201 @@
-# React + TypeScript + Vite
+# React 待办事项应用
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+一个功能完整、界面美观的待办事项管理应用，使用 React + TypeScript + Vite + Sass 构建。
 
-Currently, two official plugins are available:
+## ✨ 功能特性
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### 核心功能
+- ✅ 添加待办事项
+- ✅ 标记完成/取消完成（带删除线效果）
+- ✅ 删除单个事项
+- ✅ 编辑事项（待实现）
 
-## React Compiler
+### 批量操作
+- 🔲 全选/反选
+- ⚡ 一键完成选中的事项
+- ❌ 取消选中事项的完成状态
+- 🗑️ 删除选中的事项
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### 筛选功能
+- 📋 查看全部事项
+- ⏳ 只看未完成
+- ✔️ 只看已完成
 
-## Expanding the ESLint configuration
+### 数据持久化
+- 💾 自动保存到浏览器本地存储
+- 🔄 刷新页面数据不丢失
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### 主题切换
+- 🎨 4 种主题颜色：蓝色、粉色、绿色、紫色
+- 🌈 背景渐变色随主题变化
+- ✨ 磨砂玻璃效果
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 🚀 快速开始
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### 安装依赖
+```bash
+pnpm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### 启动开发服务器
+```bash
+pnpm dev
 ```
+
+### 构建生产版本
+```bash
+pnpm build
+```
+
+### 预览生产构建
+```bash
+pnpm preview
+```
+
+## 📁 项目结构
+
+```
+src/
+├── components/          # 组件目录
+│   ├── Header/         # 标题组件
+│   ├── TodoForm/       # 输入表单组件
+│   ├── TodoList/       # 列表容器组件
+│   ├── TodoItem/       # 单个事项组件
+│   └── ThemeSwitcher/  # 主题切换组件
+├── layout/             # 布局组件
+├── styles/             # 全局样式
+│   ├── variables.scss  # CSS 变量和主题定义
+│   └── global.scss     # 全局样式
+├── utils/              # 工具函数
+│   └── storage.ts      # 本地存储工具
+├── App.tsx             # 根组件
+└── main.tsx            # 入口文件
+```
+
+## 🎯 核心概念
+
+### 状态管理
+使用 React Hooks 进行状态管理：
+- `useState` - 管理组件状态
+- `useEffect` - 处理副作用（自动保存）
+
+### 数据结构
+```typescript
+interface Todo {
+  id: number          // 唯一标识符
+  text: string        // 事项内容
+  selected: boolean   // 是否被选中（用于批量操作）
+  completed: boolean  // 是否已完成
+}
+```
+
+### 组件通信
+- 父组件通过 props 传递数据和回调函数
+- 子组件通过调用回调函数通知父组件
+
+### 本地存储
+- 使用 `localStorage` API
+- 数据自动序列化为 JSON
+- 组件加载时读取，状态变化时保存
+
+## 🎨 样式系统
+
+### CSS 变量
+所有颜色、间距、圆角等都定义为 CSS 变量，方便主题切换：
+```scss
+:root {
+  --primary-color: #4a90e2;
+  --bg-gradient-start: #e0f2fe;
+  // ...
+}
+```
+
+### 主题切换
+通过修改 `body` 的 `data-theme` 属性切换主题：
+```typescript
+document.body.setAttribute('data-theme', 'pink')
+```
+
+### 现代化效果
+- 磨砂玻璃：`backdrop-filter: blur()`
+- 半透明背景：`rgba()`
+- 渐变色：`linear-gradient()`
+- 平滑过渡：`transition`
+
+## 🛠️ 技术栈
+
+- **React 18** - UI 框架
+- **TypeScript** - 类型安全
+- **Vite** - 构建工具
+- **Sass** - CSS 预处理器
+- **ESLint** - 代码检查
+
+## 📝 使用说明
+
+### 添加事项
+1. 在输入框中输入待办事项
+2. 点击"添加"按钮或按回车键
+
+### 完成事项
+1. 勾选复选框选择事项
+2. 点击"一键完成"按钮
+3. 或点击单个事项的"完成"按钮
+
+### 删除事项
+1. 勾选要删除的事项
+2. 点击"删除选中"按钮
+3. 或点击单个事项的"删除"按钮
+
+### 筛选事项
+点击顶部的筛选按钮：
+- "全部" - 显示所有事项
+- "未完成" - 只显示未完成的
+- "已完成" - 只显示已完成的
+
+### 切换主题
+点击右上角的颜色圆点切换主题
+
+## 🔧 配置说明
+
+### 路径别名
+项目配置了 `@/` 别名指向 `src/` 目录：
+```typescript
+import Header from '@/components/Header'
+```
+
+### TypeScript 配置
+- 严格模式开启
+- 路径别名配置
+- 类型检查
+
+## 📚 学习要点
+
+这个项目涵盖了 React 开发的核心知识点：
+
+1. **组件化开发** - 将 UI 拆分为可复用的组件
+2. **状态管理** - 使用 useState 管理数据
+3. **副作用处理** - 使用 useEffect 处理本地存储
+4. **事件处理** - 处理用户交互
+5. **条件渲染** - 根据状态显示不同内容
+6. **列表渲染** - 使用 map 渲染列表
+7. **表单处理** - 受控组件
+8. **Props 传递** - 父子组件通信
+9. **TypeScript** - 类型定义和检查
+10. **样式管理** - Sass 和 CSS 变量
+
+## 🐛 已知问题
+
+- 编辑功能尚未实现
+- 没有数据验证（可以添加空事项）
+- 没有撤销/重做功能
+
+## 🚧 待开发功能
+
+- [ ] 编辑事项
+- [ ] 拖拽排序
+- [ ] 优先级标记
+- [ ] 截止日期
+- [ ] 分类标签
+- [ ] 搜索功能
+- [ ] 数据导出/导入
+- [ ] 深色模式

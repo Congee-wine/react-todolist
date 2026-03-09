@@ -1,0 +1,64 @@
+@use '@/styles/variables.scss';
+
+.theme-switcher {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-sm);
+  background: var(--bg-card);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  z-index: 1000;
+
+  .theme-button {
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    border: 2px solid transparent;
+    border-radius: 50%;
+    background: transparent;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      transform: scale(1.1);
+      border-color: var(--primary-color);
+    }
+
+    &.active {
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.2);
+    }
+
+    .theme-color {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      transition: all var(--transition-fast);
+
+      &.blue {
+        background: linear-gradient(135deg, #4a90e2, #38bdf8);
+      }
+
+      &.pink {
+        background: linear-gradient(135deg, #ec4899, #f9a8d4);
+      }
+
+      &.green {
+        background: linear-gradient(135deg, #10b981, #34d399);
+      }
+
+      &.purple {
+        background: linear-gradient(135deg, #8b5cf6, #a78bfa);
+      }
+    }
+  }
+}

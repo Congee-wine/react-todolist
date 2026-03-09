@@ -1,0 +1,91 @@
+@use '@/styles/variables.scss';
+
+.todo-list-wrapper {
+  .todo-list-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--spacing-md) var(--spacing-lg);
+    background: rgba(255, 255, 255, 0.4);
+    border-bottom: 1px solid var(--border-color);
+
+    .select-all-section {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-sm);
+
+      .select-all-checkbox {
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+        accent-color: var(--primary-color);
+      }
+
+      .select-all-label {
+        font-size: 0.875rem;
+        color: var(--text-secondary);
+        user-select: none;
+        cursor: pointer;
+      }
+    }
+
+    .filter-section {
+      display: flex;
+      gap: var(--spacing-xs);
+    }
+
+    .function-button {
+      padding: 4px 12px;
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      background: rgba(255, 255, 255, 0.6);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: all var(--transition-fast);
+
+      &:hover {
+        color: var(--primary-color);
+        border-color: var(--primary-color);
+        background: rgba(255, 255, 255, 0.9);
+      }
+
+      &.active {
+        color: var(--text-white);
+        background: linear-gradient(
+          135deg,
+          var(--primary-color),
+          var(--accent-color)
+        );
+        border-color: transparent;
+        font-weight: 500;
+      }
+    }
+  }
+
+  .todo-list {
+    max-height: 443px;
+    overflow-y: auto;
+
+    // --- 隐藏滚动条 核心代码开始 ---
+    // 1. 兼容 Firefox
+    scrollbar-width: none;
+    // 2. 兼容 IE/Edge (旧版)
+    -ms-overflow-style: none;
+    // 3. 兼容 Chrome, Safari, Edge (新版), Opera
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    // 空状态提示
+    &:empty::after {
+      content: '暂无待办事项';
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100px;
+      color: var(--text-light);
+      font-size: 1rem;
+    }
+  }
+}

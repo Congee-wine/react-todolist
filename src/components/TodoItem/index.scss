@@ -1,0 +1,79 @@
+@use '@/styles/variables.scss';
+
+.todo-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  padding: var(--spacing-md) var(--spacing-lg);
+  background: rgba(255, 255, 255, 0.6);
+  border-bottom: 1px solid var(--border-color);
+  transition: all var(--transition-fast);
+
+  &:hover {
+    background: var(--bg-card-hover);
+    transform: translateX(4px);
+  }
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  .todo-checkbox {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    accent-color: var(--primary-color);
+  }
+
+  .todo-text {
+    flex: 1;
+    font-size: 1rem;
+    color: var(--text-primary);
+    transition: all var(--transition-fast);
+
+    &.completed {
+      text-decoration: line-through;
+      color: var(--text-light);
+      opacity: 0.6;
+    }
+  }
+
+  .button {
+    padding: 6px 12px;
+    font-size: 0.875rem;
+    color: var(--text-white);
+    // background: linear-gradient(135deg, #ef4444, #dc2626);
+    border: none;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    opacity: 0;
+
+    &:hover {
+      transform: scale(1.05);
+      // box-shadow: 0 2px 8px rgba(239, 68, 68, 0.3);
+    }
+  }
+
+  &:hover .button {
+    opacity: 1;
+  }
+
+  .delete {
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+    &:hover {
+      box-shadow: 0 2px 8px rgba(239, 68, 68, 0.3);
+    }
+  }
+
+  .complete {
+    background: linear-gradient(
+      135deg,
+      var(--primary-color),
+      var(--accent-color)
+    );
+    &:hover {
+      box-shadow: 0 2px 8px rgba(68, 205, 239, 0.3);
+    }
+  }
+}
